@@ -19,20 +19,18 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.attribute_management_sdk.AttributeManagementScreens
-import com.example.attribute_management_sdk.attributeManagementGraph
-import com.example.video_input_sdk.AddNewVideoScreens
-import com.example.video_input_sdk.addNewVideoNavigationGraph
-import com.example.view_all_videos_sdk.ViewAllVideosScreens
-import com.example.view_all_videos_sdk.viewAllVideosNavigationGraph
 import java.net.URLEncoder
 
 @Composable
-fun AppNavigation(sharedUrl: String) {
+fun AppNavigation(
+    sharedUrl: String,
+    featureNavigationProviders: Set<FeatureNavigationProvider>,
+) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val navController = rememberNavController()
 
@@ -53,14 +51,16 @@ fun AppNavigation(sharedUrl: String) {
         }
 
         NavHost(navController = navController, startDestination = "${ AttributeManagementScreens.AttributeScreen().route }/true") {
-            attributeManagementGraph(navController)
-
-            addNewVideoNavigationGraph(
-                navController,
-                "${ AttributeManagementScreens.AttributeScreen().route }/false",
-            )
-
-            viewAllVideosNavigationGraph(navController)
+            // Iterate through all injected providers and execute their graph creation
+            featureNavigationProviders.forEach { provider ->
+                provider.createAttributeManagementGraph(this, navController) // Assuming this is needed on main screen
+                provider.createAddNewVideoGraph(
+                    this,
+                    navController,
+                    "${ AttributeManagementScreens.AttributeScreen().route }/false",
+                )
+                provider.createViewAllVideosGraph(this, navController)
+            }
         }
     }
 }
@@ -100,9 +100,9 @@ fun AppModalDrawerSheet(navController: NavHostController) {
             )
 
             NavigationDrawerItem(
-                label = { Text(Screens.ViewAllVideosScreen().title) },
+                label = { Text(ViewAllVideosScreens.ViewAllVideosScreen().title) },
                 selected = false,
-                onClick = { navController.navigate(Screens.ViewAllVideosScreen().route) },
+                onClick = { navController.navigate(ViewAllVideosScreens.ViewAllVideosScreen().route) },
             )
 
             /* TODO: Nice to haves. Not available right now
@@ -133,13 +133,54 @@ fun getCurrentPageTitle(route: String): String =
     when (route) {
         AttributeManagementScreens.AttributeScreen().route -> AttributeManagementScreens.AttributeScreen().title
         AddNewVideoScreens.InsertNewVideoFromDeepLinkScreen().route -> AddNewVideoScreens.InsertNewVideoFromDeepLinkScreen().title
-        ViewAllVideosScreens.ViewAllVideosScreen().route -> Screens.ViewAllVideosScreen().title
+        ViewAllVideosScreens.ViewAllVideosScreen().route -> ViewAllVideosScreens.ViewAllVideosScreen().title
         else -> "Anomaly"
     }
 
-sealed class Screens {
+//region routes
+sealed class ViewAllVideosScreens {
     data class ViewAllVideosScreen(
         val title: String = "View All Videos",
         val route: String = "viewAllVideosScreen",
     )
 }
+
+sealed class AttributeManagementScreens {
+    data class AttributeScreen(
+        val title: String = "Attribute Catalogue",
+        val route: String = "attributeScreen",
+    )
+}
+
+sealed class AddNewVideoScreens {
+    data class InsertNewVideoFromDeepLinkScreen(
+        val title: String = "Insert New Video",
+        val route: String = "insertNewVideoScreen",
+    )
+}
+//endregion
+
+//region navigation contract
+// A sealed interface or class for all feature navigation contracts
+interface FeatureNavigationProvider {
+    // Defines the contract for the Attribute Management Graph
+    fun createAttributeManagementGraph(
+        navGraphBuilder: NavGraphBuilder,
+        navController: NavHostController,
+    )
+
+    // Defines the contract for the Add New Video Graph
+    fun createAddNewVideoGraph(
+        navGraphBuilder: NavGraphBuilder,
+        navController: NavHostController,
+        onVideoAddedDestination: String,
+    )
+
+    // Defines the contract for the View All Videos Graph
+    fun createViewAllVideosGraph(
+        navGraphBuilder: NavGraphBuilder,
+        navController: NavHostController,
+    )
+    // ... other feature navigation contracts
+}
+//endregion

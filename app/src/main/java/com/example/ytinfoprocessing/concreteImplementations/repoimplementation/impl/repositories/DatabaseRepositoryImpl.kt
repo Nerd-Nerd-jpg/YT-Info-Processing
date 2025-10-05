@@ -1,4 +1,4 @@
-package com.example.ytinfoprocessing.concreteImplementations.repoimplementation.impl
+package com.example.ytinfoprocessing.concreteImplementations.repoimplementation.impl.repositories
 
 import com.example.core_sdk.data.database.models.AttributeDO
 import com.example.core_sdk.data.database.models.VideoAttributeDO

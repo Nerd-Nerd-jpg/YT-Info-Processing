@@ -88,4 +88,10 @@ dependencies {
 //    implementation(project(":attribute-management-sdk"))
 //    implementation(project(":video-input-sdk"))
 //    implementation(project(":view-all-videos-sdk"))
+
+    // **Crucially, manually include the KSP compiler output from the feature modules**
+    // You only need the KSP/KAPT dependency, not the implementation dependency.
+    ksp(project(":attribute-management-sdk"))
+    ksp(project(":video-input-sdk"))
+    ksp(project(":view-all-videos-sdk"))
 }

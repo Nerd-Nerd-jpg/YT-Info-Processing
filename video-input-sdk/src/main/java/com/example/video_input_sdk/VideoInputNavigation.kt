@@ -6,6 +6,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.video_input_sdk.presentation.InputVerificationViewModel
 import com.example.video_input_sdk.presentation.InsertNewVideoScreen
+import com.example.ytinfoprocessing.AddNewVideoScreens
+import com.example.ytinfoprocessing.FeatureNavigationProvider
+import javax.inject.Inject
 
 fun NavGraphBuilder.addNewVideoNavigationGraph(
     navController: NavHostController, // To be used only for navigating within the video_input_sdk module
@@ -27,9 +30,24 @@ fun NavGraphBuilder.addNewVideoNavigationGraph(
     }
 }
 
-sealed class AddNewVideoScreens {
-    data class InsertNewVideoFromDeepLinkScreen(
-        val title: String = "Insert New Video",
-        val route: String = "insertNewVideoScreen",
-    )
+// This is the implementation of the contract
+class AddNewVideoNavigationProvider @Inject constructor() : FeatureNavigationProvider {
+
+    override fun createAttributeManagementGraph(
+        navGraphBuilder: NavGraphBuilder,
+        navController: NavHostController,
+    ) {}
+
+    override fun createAddNewVideoGraph(
+        navGraphBuilder: NavGraphBuilder,
+        navController: NavHostController,
+        attributeAssignmentScreenRoute: String,
+    ) {
+        navGraphBuilder.addNewVideoNavigationGraph(navController, attributeAssignmentScreenRoute)
+    }
+
+    override fun createViewAllVideosGraph(
+        navGraphBuilder: NavGraphBuilder,
+        navController: NavHostController,
+    ) {}
 }

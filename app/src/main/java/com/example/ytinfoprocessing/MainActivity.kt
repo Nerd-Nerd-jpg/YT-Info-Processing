@@ -7,9 +7,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.core_sdk.presentation.ui.theme.YTInfoProcessingTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    // 1. Inject the Set<FeatureNavigationProvider> that Hilt has collected
+    // from all feature modules using multibinding.
+    @Inject
+    lateinit var featureNavigationProviders: @JvmSuppressWildcards Set<FeatureNavigationProvider>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,7 +32,10 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             YTInfoProcessingTheme {
-                AppNavigation(sharedText)
+                AppNavigation(
+                    sharedText,
+                    featureNavigationProviders
+                )
             }
         }
     }
