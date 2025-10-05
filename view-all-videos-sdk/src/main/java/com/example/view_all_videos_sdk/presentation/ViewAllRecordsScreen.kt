@@ -41,8 +41,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.view_all_videos_sdk.R
 import com.example.core_sdk.data.database.models.YTVideoDataDO
+import com.example.view_all_videos_sdk.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

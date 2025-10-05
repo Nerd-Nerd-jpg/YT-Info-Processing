@@ -2,11 +2,8 @@ package com.example.ytinfoprocessing.concreteImplementations.repoimplementation.
 
 import android.content.Context
 import androidx.room.Room
-import com.example.core_sdk.domain.repodefinitions.DatabaseRepositoryDefinition
-import com.example.ytinfoprocessing.data.database.AttributeDao
-import com.example.ytinfoprocessing.data.database.VideoAttributeDao
-import com.example.ytinfoprocessing.data.database.VideoDao
 import com.example.core_sdk.data.database.YouTubeDatabase
+import com.example.core_sdk.domain.repodefinitions.DatabaseRepositoryDefinition
 import com.example.ytinfoprocessing.concreteImplementations.repoimplementation.impl.DatabaseRepositoryImpl
 import dagger.Binds
 import dagger.Module

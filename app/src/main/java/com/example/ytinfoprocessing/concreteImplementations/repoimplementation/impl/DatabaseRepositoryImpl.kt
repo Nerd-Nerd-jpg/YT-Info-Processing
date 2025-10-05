@@ -1,12 +1,12 @@
 package com.example.ytinfoprocessing.concreteImplementations.repoimplementation.impl
 
+import com.example.core_sdk.data.database.models.AttributeDO
+import com.example.core_sdk.data.database.models.VideoAttributeDO
+import com.example.core_sdk.data.database.models.YTVideoDataDO
 import com.example.core_sdk.domain.repodefinitions.DatabaseRepositoryDefinition
 import com.example.ytinfoprocessing.data.database.AttributeDao
 import com.example.ytinfoprocessing.data.database.VideoAttributeDao
 import com.example.ytinfoprocessing.data.database.VideoDao
-import com.example.core_sdk.data.database.models.AttributeDO
-import com.example.core_sdk.data.database.models.VideoAttributeDO
-import com.example.core_sdk.data.database.models.YTVideoDataDO
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

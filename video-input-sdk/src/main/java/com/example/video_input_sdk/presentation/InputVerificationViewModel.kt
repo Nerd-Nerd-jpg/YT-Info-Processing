@@ -2,9 +2,9 @@ package com.example.video_input_sdk.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.video_input_sdk.domain.InputVerificationUseCases
 import com.example.core_sdk.data.database.models.AttributeDO
 import com.example.core_sdk.data.database.models.YTVideoDataDO
+import com.example.video_input_sdk.domain.InputVerificationUseCases
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
