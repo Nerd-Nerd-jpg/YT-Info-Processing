@@ -1,7 +1,7 @@
 package com.example.video_input_sdk.domain
 
 import com.example.core_sdk.domain.repodefinitions.DatabaseRepositoryDefinition
-import com.example.ytinfoprocessing.data.database.models.YTVideoDataDO
+import com.example.core_sdk.data.database.models.YTVideoDataDO
 import com.example.ytinfoprocessing.data.network.models.YoutubeVideoDataResponse
 import javax.inject.Inject
 

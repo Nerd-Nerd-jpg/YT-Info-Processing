@@ -76,5 +76,6 @@ dependencies {
 
     implementation(libs.coil.compose)
 
-    implementation(project(":core-sdk"))
+//    implementation(project(":core-sdk"))
+    implementation(project(":app"))
 }

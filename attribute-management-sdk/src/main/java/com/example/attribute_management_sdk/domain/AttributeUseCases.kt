@@ -1,7 +1,7 @@
 package com.example.attribute_management_sdk.domain
 
+import com.example.core_sdk.data.database.models.AttributeDO
 import com.example.core_sdk.domain.repodefinitions.DatabaseRepositoryDefinition
-import com.example.ytinfoprocessing.data.database.models.AttributeDO
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

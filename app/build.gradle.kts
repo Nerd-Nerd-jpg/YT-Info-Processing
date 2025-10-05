@@ -74,11 +74,18 @@ dependencies {
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
 
+    ksp(libs.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter.gson) // Gson converter for JSON parsing
+
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 
-    implementation(project(":core-sdk"))
-    implementation(project(":attribute-management-sdk"))
-    implementation(project(":video-input-sdk"))
-    implementation(project(":view-all-videos-sdk"))
+    api(project(":core-sdk"))
+//    implementation(project(":attribute-management-sdk"))
+//    implementation(project(":video-input-sdk"))
+//    implementation(project(":view-all-videos-sdk"))
 }

@@ -1,4 +1,4 @@
-package com.example.core_sdk.di
+package com.example.ytinfoprocessing.concreteImplementations.repoimplementation.di
 
 import dagger.Module
 import dagger.Provides

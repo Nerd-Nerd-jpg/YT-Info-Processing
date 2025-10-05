@@ -1,8 +1,8 @@
 package com.example.core_sdk.domain.repodefinitions
 
-import com.example.ytinfoprocessing.data.database.models.AttributeDO
-import com.example.ytinfoprocessing.data.database.models.VideoAttributeDO
-import com.example.ytinfoprocessing.data.database.models.YTVideoDataDO
+import com.example.core_sdk.data.database.models.AttributeDO
+import com.example.core_sdk.data.database.models.VideoAttributeDO
+import com.example.core_sdk.data.database.models.YTVideoDataDO
 import kotlinx.coroutines.flow.Flow
 
 // Repository Interface

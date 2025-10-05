@@ -1,10 +1,13 @@
-package com.example.ytinfoprocessing.data.database
+package com.example.core_sdk.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.ytinfoprocessing.data.database.models.AttributeDO
-import com.example.ytinfoprocessing.data.database.models.VideoAttributeDO
-import com.example.ytinfoprocessing.data.database.models.YTVideoDataDO
+import com.example.core_sdk.data.database.models.AttributeDO
+import com.example.core_sdk.data.database.models.VideoAttributeDO
+import com.example.core_sdk.data.database.models.YTVideoDataDO
+import com.example.ytinfoprocessing.data.database.AttributeDao
+import com.example.ytinfoprocessing.data.database.VideoAttributeDao
+import com.example.ytinfoprocessing.data.database.VideoDao
 
 // Database
 @Database(

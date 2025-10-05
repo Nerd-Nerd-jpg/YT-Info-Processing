@@ -1,8 +1,8 @@
 package com.example.view_all_videos_sdk.domain
 
 import com.example.core_sdk.domain.repodefinitions.DatabaseRepositoryDefinition
-import com.example.ytinfoprocessing.data.database.models.VideoAttributeDO
-import com.example.ytinfoprocessing.data.database.models.YTVideoDataDO
+import com.example.core_sdk.data.database.models.VideoAttributeDO
+import com.example.core_sdk.data.database.models.YTVideoDataDO
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

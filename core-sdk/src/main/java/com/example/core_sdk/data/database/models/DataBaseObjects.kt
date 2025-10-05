@@ -1,4 +1,4 @@
-package com.example.ytinfoprocessing.data.database.models
+package com.example.core_sdk.data.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
