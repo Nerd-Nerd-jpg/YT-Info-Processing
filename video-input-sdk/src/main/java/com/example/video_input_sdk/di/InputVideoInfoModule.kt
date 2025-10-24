@@ -13,17 +13,11 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import javax.inject.Scope
 import javax.inject.Singleton
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class InputVideoInfoScope
 
 @Module
 @InstallIn(SingletonComponent::class)
 object InputVideoInfoModule {
-//    @InputVideoInfoScope
     @Provides
     fun provideInputVerificationUseCases(
         networkRepo: NetworkRepositoryDefinition,

@@ -8,16 +8,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Scope
-
-@Scope
-@Retention(AnnotationRetention.RUNTIME)
-annotation class ViewAllVideosScope
 
 @Module
 @InstallIn(SingletonComponent::class)
 object ViewAllVideosModule {
-//    @ViewAllVideosScope
     @Provides
     fun provideViewAllRecordsUseCases(dataBaseRepo: DatabaseRepositoryDefinition): ViewAllRecordsUseCases =
         ViewAllRecordsUseCases(
